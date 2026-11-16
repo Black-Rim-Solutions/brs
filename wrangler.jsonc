@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Static marketing site for Black Rim Solutions LLC. No Worker code: every request is served
+  // straight from public/ (free, no Worker invocations).
+  "name": "blackrimsolutions",
+  "compatibility_date": "2026-11-01",
+
+  // DNS is on Cloudflare; both hostnames attach to this Worker. www → apex is a Redirect Rule
+  // in the dashboard (Rules → Redirect Rules → "Redirect from WWW to root").
+  "workers_dev": false,
+  "routes": [
+    { "pattern": "blackrimsolutions.com", "custom_domain": true },
+    { "pattern": "www.blackrimsolutions.com", "custom_domain": true }
+  ],
+
+  "assets": {
+    "directory": "public",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  }
+}

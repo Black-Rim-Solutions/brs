@@ -1,0 +1,12 @@
+{
+  "name": "blackrimsolutions",
+  "private": true,
+  "description": "Black Rim Solutions LLC marketing site (static, Cloudflare Workers assets)",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.147.0"
+  }
+}
