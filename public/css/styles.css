@@ -188,9 +188,18 @@ p { margin: 0 0 1em; }
 @media (min-width: 960px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
 .steps {
   list-style: none; padding: 0; margin: 48px 0 32px;
-  display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  display: grid; gap: 28px 24px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   border-top: 1px solid #3a3a3a; padding-top: 32px;
 }
-.steps strong { display: block; font-family: var(--font-display); font-weight: 400; font-size: 1.2rem; margin-bottom: 6px; }
-.steps span { color: var(--muted); font-size: 0.95rem; }
+.steps { counter-reset: step; }
+.steps li { counter-increment: step; }
+.steps h3 { font-size: 1.2rem; margin: 0 0 6px; display: flex; align-items: center; gap: 10px; }
+.steps h3::before {
+  content: counter(step);
+  flex: none; width: 28px; height: 28px; border-radius: 50%;
+  border: 1.5px solid var(--text);
+  display: grid; place-items: center;
+  font-family: var(--font-body); font-size: 0.85rem; font-weight: 500;
+}
+.steps p { color: var(--muted); font-size: 0.95rem; margin: 0; }
 .ai-note { color: var(--muted); font-size: 0.95rem; max-width: 60ch; }
