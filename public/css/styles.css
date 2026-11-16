@@ -180,3 +180,17 @@ p { margin: 0 0 1em; }
 .site-footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
 .site-footer a { color: var(--muted); text-decoration: none; }
 .site-footer a:hover { color: var(--text); }
+
+/* ---------- AI section ---------- */
+.section-ai { background: var(--rim); }
+.section-ai .card { background: #232323; border-color: #3a3a3a; }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+@media (min-width: 960px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+.steps {
+  list-style: none; padding: 0; margin: 48px 0 32px;
+  display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  border-top: 1px solid #3a3a3a; padding-top: 32px;
+}
+.steps strong { display: block; font-family: var(--font-display); font-weight: 400; font-size: 1.2rem; margin-bottom: 6px; }
+.steps span { color: var(--muted); font-size: 0.95rem; }
+.ai-note { color: var(--muted); font-size: 0.95rem; max-width: 60ch; }
