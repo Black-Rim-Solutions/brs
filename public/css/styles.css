@@ -1,0 +1,182 @@
+/* Black Rim Solutions — monochrome palette taken from the logo (white on charcoal). */
+:root {
+  --rim: #1a1a1a;        /* near-black: header, footer — "the rim" */
+  --deep: #2b2b2b;       /* alternate section background */
+  --charcoal: #424242;   /* brand surface, matches the logo's original backdrop */
+  --card: #353535;
+  --line: #616161;
+  --text: #ffffff;
+  --muted: #bdbdbd;
+
+  --font-display: "Josefin Sans", "Futura", "Century Gothic", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --max: 1120px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --radius: 14px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--deep);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+a { color: var(--text); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { color: var(--muted); }
+:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; border-radius: 4px; }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  margin: 0 0 0.5em;
+}
+h1 { font-size: clamp(2rem, 5vw, 3.25rem); }
+h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); }
+h3 { font-size: 1.35rem; font-weight: 400; }
+p { margin: 0 0 1em; }
+
+.container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+.skip-link {
+  position: absolute; left: -9999px; top: 8px;
+  background: var(--text); color: var(--rim); padding: 8px 14px; border-radius: 6px; z-index: 100;
+}
+.skip-link:focus { left: 8px; }
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(26, 26, 26, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #2f2f2f;
+}
+.site-header .container {
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 64px; gap: 16px;
+}
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand img { width: 92px; height: auto; }
+.nav { display: flex; gap: clamp(12px, 3vw, 28px); flex-wrap: wrap; justify-content: flex-end; }
+.nav a {
+  text-decoration: none; color: var(--muted);
+  font-size: 0.95rem; letter-spacing: 0.04em;
+}
+.nav a:hover, .nav a[aria-current="page"] { color: var(--text); }
+@media (max-width: 560px) {
+  .nav a.nav-optional { display: none; }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background:
+    radial-gradient(ellipse at 50% 35%, #4d4d4d 0%, var(--charcoal) 45%, #333 100%);
+  text-align: center;
+  padding: clamp(56px, 10vw, 112px) 0 clamp(64px, 10vw, 120px);
+  border-bottom: 1px solid #2f2f2f;
+}
+.hero-logo { width: min(460px, 86%); margin: 0 auto 28px; height: auto; }
+.hero h1 { margin-bottom: 0.35em; }
+.hero .lede { color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.25rem); max-width: 40ch; margin: 0 auto 2rem; }
+
+.glasses { color: var(--text); width: 96px; margin: 0 auto 24px; opacity: 0.9; }
+
+.btn {
+  display: inline-block;
+  padding: 0.8em 1.6em;
+  border: 1.5px solid var(--text);
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  transition: background 0.2s, color 0.2s;
+}
+.btn:hover { background: var(--text); color: var(--rim); }
+.btn-solid { background: var(--text); color: var(--rim); }
+.btn-solid:hover { background: transparent; color: var(--text); }
+
+/* ---------- Sections ---------- */
+.section { padding: clamp(64px, 9vw, 104px) 0; }
+.section-alt { background: var(--charcoal); }
+.section-head { max-width: 640px; margin-bottom: 40px; }
+.eyebrow {
+  display: block;
+  font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 0.75rem;
+}
+.section-head p { color: var(--muted); }
+
+.grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+.card {
+  background: var(--card);
+  border: 1px solid #484848;
+  border-radius: var(--radius);
+  padding: 28px;
+}
+.section-alt .card { background: #3a3a3a; border-color: #555; }
+.card p { color: var(--muted); margin: 0; }
+.card .icon { width: 36px; height: 36px; margin-bottom: 18px; color: var(--text); }
+
+/* Apps */
+.app-card { display: flex; flex-direction: column; gap: 14px; }
+.app-card header { display: flex; align-items: center; gap: 14px; }
+.app-icon {
+  width: 56px; height: 56px; border-radius: 13px; flex: none;
+  background: var(--rim); border: 1px solid var(--line);
+  display: grid; place-items: center;
+  font-family: var(--font-display); font-size: 1.5rem;
+}
+.app-card h3 { margin: 0; }
+.app-card .tag { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.06em; }
+.app-card .links { margin-top: auto; display: flex; gap: 16px; font-size: 0.95rem; }
+
+/* About */
+.about { display: grid; gap: clamp(32px, 6vw, 64px); grid-template-columns: 1fr; align-items: center; }
+@media (min-width: 860px) { .about { grid-template-columns: 5fr 7fr; } }
+.about-mark {
+  background: var(--rim); border-radius: var(--radius);
+  aspect-ratio: 4 / 3; display: grid; place-items: center; padding: 40px;
+}
+.about-mark .glasses { width: 70%; margin: 0; }
+.stats { display: flex; gap: 32px; flex-wrap: wrap; margin: 28px 0; padding: 0; list-style: none; }
+.stats strong { display: block; font-family: var(--font-display); font-size: 2rem; font-weight: 300; line-height: 1.1; }
+.stats span { color: var(--muted); font-size: 0.9rem; }
+.social { display: flex; gap: 20px; }
+
+/* Contact */
+.contact { text-align: center; }
+.contact h2 { margin-bottom: 0.4em; }
+.contact p { color: var(--muted); max-width: 46ch; margin-left: auto; margin-right: auto; }
+.contact .email { font-family: var(--font-display); font-size: clamp(1.25rem, 3.5vw, 1.75rem); word-break: break-word; }
+
+/* ---------- Legal / text pages ---------- */
+.page-head { background: var(--charcoal); padding: clamp(48px, 7vw, 80px) 0 40px; border-bottom: 1px solid #2f2f2f; }
+.page-head p { color: var(--muted); margin: 0; }
+.prose { max-width: 760px; padding-top: 48px; padding-bottom: 80px; }
+.prose h2 { font-size: 1.6rem; margin-top: 2em; }
+.prose h3 { margin-top: 1.5em; }
+.prose ul { padding-left: 1.25em; }
+.prose li { margin-bottom: 0.4em; }
+.prose p, .prose li { color: #e0e0e0; }
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--rim); padding: 40px 0; font-size: 0.9rem; color: var(--muted); }
+.site-footer .container { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: space-between; align-items: center; }
+.site-footer p { margin: 0; }
+.site-footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
+.site-footer a { color: var(--muted); text-decoration: none; }
+.site-footer a:hover { color: var(--text); }
