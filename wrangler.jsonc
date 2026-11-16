@@ -5,15 +5,13 @@
   "name": "blackrimsolutions",
   "compatibility_date": "2026-11-01",
 
-  // TEMPORARY: the domain's DNS is still at Namecheap (pointing at the old Netlify site), so the
-  // site is served on workers.dev for now. Once blackrimsolutions.com is added to Cloudflare,
-  // set workers_dev to false and uncomment routes. www → apex is then a Redirect Rule in the
-  // dashboard (Rules → Redirect Rules → "Redirect from WWW to root").
-  "workers_dev": true,
-  // "routes": [
-  //   { "pattern": "blackrimsolutions.com", "custom_domain": true },
-  //   { "pattern": "www.blackrimsolutions.com", "custom_domain": true }
-  // ],
+  // DNS is on Cloudflare; both hostnames attach to this Worker. www → apex is a Redirect Rule
+  // in the dashboard (Rules → Redirect Rules → "Redirect from WWW to root").
+  "workers_dev": false,
+  "routes": [
+    { "pattern": "blackrimsolutions.com", "custom_domain": true },
+    { "pattern": "www.blackrimsolutions.com", "custom_domain": true }
+  ],
 
   "assets": {
     "directory": "public",
